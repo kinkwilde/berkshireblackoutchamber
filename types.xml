@@ -258,7 +258,7 @@
         <value name="Tier4" />
     </type>
     <type name="CrabCan">
-        <nominal>20</nominal>
+        <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
         <min>15</min>
@@ -1646,10 +1646,10 @@
         <usage name="School" />
     </type>
     <type name="AliceBag_Black">
-        <nominal>10</nominal>
+        <nominal>6</nominal>
         <lifetime>28800</lifetime>
         <restock>1800</restock>
-        <min>8</min>
+        <min>3</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -1659,10 +1659,10 @@
         <usage name="Military" />
     </type>
     <type name="AliceBag_Camo">
-        <nominal>10</nominal>
+        <nominal>6</nominal>
         <lifetime>28800</lifetime>
         <restock>1800</restock>
-        <min>8</min>
+        <min>3</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -1672,10 +1672,10 @@
         <usage name="Military" />
     </type>
     <type name="AliceBag_Green">
-        <nominal>10</nominal>
+        <nominal>6</nominal>
         <lifetime>28800</lifetime>
         <restock>1800</restock>
-        <min>8</min>
+        <min>3</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -2788,10 +2788,10 @@
             crafted="0" deloot="0" />
     </type>
     <type name="AnniversaryBox">
-        <nominal>14</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>12</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -2801,14 +2801,14 @@
         <usage name="Lunapark" />
     </type>
     <type name="Anniversary_FireworksLauncher">
-        <nominal>14</nominal>
+        <nominal>6</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>12</min>
+        <min>2</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="0" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="tools" />
         <usage name="Lunapark" />
@@ -2842,10 +2842,10 @@
         <usage name="Town" />
     </type>
     <type name="Apple">
-        <nominal>1</nominal>
-        <lifetime>180</lifetime>
-        <restock>1</restock>
-        <min>1</min>
+        <nominal>0</nominal>
+        <lifetime>900</lifetime>
+        <restock>0</restock>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -3334,10 +3334,10 @@
         <category name="clothes" />
     </type>
     <type name="ArmyPouch_Beige">
-        <nominal>8</nominal>
+        <nominal>6</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>3</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -3350,10 +3350,10 @@
         <value name="Tier3" />
     </type>
     <type name="ArmyPouch_Black">
-        <nominal>8</nominal>
+        <nominal>6</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>3</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -3366,7 +3366,7 @@
         <value name="Tier3" />
     </type>
     <type name="ArmyPouch_Camo">
-        <nominal>5</nominal>
+        <nominal>6</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
         <min>3</min>
@@ -3382,10 +3382,10 @@
         <value name="Tier3" />
     </type>
     <type name="ArmyPouch_Green">
-        <nominal>8</nominal>
+        <nominal>6</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>3</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -3623,10 +3623,10 @@
         <category name="tools" />
     </type>
     <type name="BakedBeansCan">
-        <nominal>30</nominal>
+        <nominal>40</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>15</min>
+        <min>25</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -5140,11 +5140,11 @@
         <usage name="Village" />
     </type>
     <type name="BoxCerealCrunchin">
-        <nominal>15</nominal>
+        <nominal>30</nominal>
         <lifetime>28800</lifetime>
         <restock>0</restock>
-        <min>10</min>
-        <quantmin>10</quantmin>
+        <min>15</min>
+        <quantmin>60</quantmin>
         <quantmax>100</quantmax>
         <cost>100</cost>
         <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
@@ -5328,10 +5328,10 @@
         <usage name="Village" />
     </type>
     <type name="BrisketSpread">
-        <nominal>15</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -5372,14 +5372,14 @@
         <usage name="Village" />
     </type>
     <type name="Broom_Birch">
-        <nominal>10</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>8</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="1" />
         <usage name="SeasonalEvent" />
     </type>
@@ -5874,7 +5874,7 @@
         <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>15</min>
+        <min>25</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -5883,6 +5883,7 @@
         <category name="food" />
         <tag name="shelves" />
         <usage name="Town" />
+        <usage name="Coast" />
         <usage name="Village" />
         <usage name="Lunapark" />
         <value name="Tier1" />
@@ -5916,14 +5917,14 @@
         <usage name="Village" />
     </type>
     <type name="Cauldron">
-        <nominal>10</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="1" />
         <usage name="SeasonalEvent" />
     </type>
@@ -6194,12 +6195,13 @@
         <usage name="Town" />
         <usage name="Village" />
         <usage name="School" />
+        <value name="Tier1" />
     </type>
     <type name="Chips">
-        <nominal>15</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>7</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -7177,10 +7179,10 @@
         <usage name="Military" />
     </type>
     <type name="Crackers">
-        <nominal>11</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -7195,14 +7197,14 @@
         <value name="Tier1" />
     </type>
     <type name="CrookedNose">
-        <nominal>10</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>8</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="1" />
         <usage name="SeasonalEvent" />
     </type>
@@ -7794,7 +7796,7 @@
         <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>15</min>
+        <min>25</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -7803,6 +7805,7 @@
         <category name="food" />
         <tag name="shelves" />
         <usage name="Town" />
+        <usage name="Coast" />
         <usage name="Village" />
         <usage name="School" />
         <usage name="Lunapark" />
@@ -8150,10 +8153,11 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
         <usage name="Lunapark" />
+        <usage name="SeasonalEvent" />
     </type>
     <type name="EyeMask_Blue">
         <nominal>0</nominal>
@@ -8163,10 +8167,11 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
         <usage name="Lunapark" />
+        <usage name="SeasonalEvent" />
     </type>
     <type name="EyeMask_Christmas">
         <nominal>0</nominal>
@@ -8176,9 +8181,10 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
+        <usage name="SeasonalEvent" />
     </type>
     <type name="EyeMask_Dead">
         <nominal>0</nominal>
@@ -8188,7 +8194,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
         <usage name="SeasonalEvent" />
@@ -8201,9 +8207,10 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
+        <usage name="SeasonalEvent" />
     </type>
     <type name="EyeMask_Red">
         <nominal>0</nominal>
@@ -8213,7 +8220,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
         <usage name="Lunapark" />
@@ -8227,9 +8234,10 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
+        <usage name="SeasonalEvent" />
     </type>
     <type name="EyeMask_Yellow">
         <nominal>0</nominal>
@@ -8239,7 +8247,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
         <usage name="Lunapark" />
@@ -9606,7 +9614,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9623,7 +9631,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9640,7 +9648,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9657,7 +9665,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9674,7 +9682,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9691,7 +9699,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9708,7 +9716,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9725,7 +9733,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9742,7 +9750,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9759,7 +9767,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9776,7 +9784,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -9793,7 +9801,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="containers" />
         <tag name="floor" />
@@ -11450,10 +11458,10 @@
         <usage name="Village" />
     </type>
     <type name="Honey">
-        <nominal>12</nominal>
+        <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -13422,10 +13430,10 @@
         <usage name="Industrial" />
     </type>
     <type name="Lunchmeat">
-        <nominal>12</nominal>
+        <nominal>15</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>8</min>
+        <min>10</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -14797,10 +14805,10 @@
         <usage name="Town" />
     </type>
     <type name="Marmalade">
-        <nominal>10</nominal>
+        <nominal>20</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>10</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -16459,10 +16467,10 @@
         <usage name="Medic" />
     </type>
     <type name="Pajka">
-        <nominal>11</nominal>
+        <nominal>15</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>8</min>
+        <min>10</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -16631,10 +16639,10 @@
         <usage name="Lunapark" />
     </type>
     <type name="Pate">
-        <nominal>11</nominal>
+        <nominal>15</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>10</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -16661,10 +16669,10 @@
         <category name="food" />
     </type>
     <type name="PeachesCan">
-        <nominal>12</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>8</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -16692,10 +16700,10 @@
         <category name="food" />
     </type>
     <type name="Pear">
-        <nominal>1</nominal>
-        <lifetime>180</lifetime>
-        <restock>1</restock>
-        <min>1</min>
+        <nominal>0</nominal>
+        <lifetime>900</lifetime>
+        <restock>0</restock>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -16787,7 +16795,7 @@
         <nominal>15</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>7</min>
+        <min>5</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -17298,10 +17306,10 @@
         <usage name="Village" />
     </type>
     <type name="Plum">
-        <nominal>1</nominal>
-        <lifetime>180</lifetime>
-        <restock>1</restock>
-        <min>1</min>
+        <nominal>0</nominal>
+        <lifetime>900</lifetime>
+        <restock>0</restock>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -17389,10 +17397,10 @@
         <usage name="Police" />
     </type>
     <type name="PorkCan">
-        <nominal>15</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -17638,7 +17646,7 @@
         <nominal>15</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>7</min>
+        <min>5</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -18173,10 +18181,10 @@
         <value name="Tier4" />
     </type>
     <type name="Rice">
-        <nominal>20</nominal>
+        <nominal>40</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>20</min>
         <quantmin>10</quantmin>
         <quantmax>100</quantmax>
         <cost>100</cost>
@@ -18184,6 +18192,8 @@
             crafted="0" deloot="0" />
         <category name="food" />
         <tag name="shelves" />
+        <usage name="Town" />
+        <usage name="Farm" />
         <usage name="Village" />
         <value name="Tier1" />
         <value name="Tier2" />
@@ -18388,10 +18398,10 @@
         <category name="tools" />
     </type>
     <type name="SaltySticks">
-        <nominal>15</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -20021,10 +20031,10 @@
         <usage name="School" />
     </type>
     <type name="SodaCan_Cola">
-        <nominal>20</nominal>
+        <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>18</min>
+        <min>20</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -20066,10 +20076,10 @@
         <value name="Tier3" />
     </type>
     <type name="SodaCan_Pipsi">
-        <nominal>15</nominal>
+        <nominal>25</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -20096,10 +20106,10 @@
         <value name="Tier3" />
     </type>
     <type name="SpaghettiCan">
-        <nominal>30</nominal>
+        <nominal>40</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>15</min>
+        <min>25</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -21365,10 +21375,10 @@
         <category name="tools" />
     </type>
     <type name="TomatoSeedsPack">
-        <nominal>30</nominal>
+        <nominal>20</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>25</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -21948,7 +21958,7 @@
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
             crafted="0" deloot="0" />
         <category name="clothes" />
         <usage name="SeasonalEvent" />
@@ -22509,51 +22519,51 @@
         <usage name="Village" />
     </type>
     <type name="WitchHat">
-        <nominal>5</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>2</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
-            crafted="0" deloot="1" />
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
+            crafted="0" deloot="0" />
         <usage name="SeasonalEvent" />
     </type>
     <type name="WitchHood_Black">
-        <nominal>5</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>2</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
-            crafted="0" deloot="1" />
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
+            crafted="0" deloot="0" />
         <usage name="SeasonalEvent" />
     </type>
     <type name="WitchHood_Brown">
-        <nominal>5</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>2</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
-            crafted="0" deloot="1" />
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
+            crafted="0" deloot="0" />
         <usage name="SeasonalEvent" />
     </type>
     <type name="WitchHood_Red">
-        <nominal>5</nominal>
+        <nominal>0</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>2</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0"
-            crafted="0" deloot="1" />
+        <flags count_in_cargo="1" count_in_hoarder="1" count_in_map="1" count_in_player="1"
+            crafted="0" deloot="0" />
         <usage name="SeasonalEvent" />
     </type>
     <type name="WolfMask">
@@ -23242,10 +23252,10 @@
         <value name="Tier4" />
     </type>
     <type name="Zagorky">
-        <nominal>17</nominal>
+        <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>16</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -23263,10 +23273,10 @@
         <value name="Tier3" />
     </type>
     <type name="ZagorkyChocolate">
-        <nominal>17</nominal>
+        <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>14</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -23277,10 +23287,10 @@
         <usage name="Hunting" />
     </type>
     <type name="ZagorkyPeanuts">
-        <nominal>17</nominal>
+        <nominal>30</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>14</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -25170,10 +25180,10 @@
         <category name="tools" />
     </type>
     <type name="ZucchiniSeedsPack">
-        <nominal>15</nominal>
+        <nominal>10</nominal>
         <lifetime>14400</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>5</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -25198,10 +25208,10 @@
         <usage name="Village" />
     </type>
     <type name="CannabisSeedsPack">
-        <nominal>10</nominal>
+        <nominal>0</nominal>
         <lifetime>3600</lifetime>
         <restock>0</restock>
-        <min>5</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -25211,10 +25221,10 @@
         <usage name="Farm" />
     </type>
     <type name="CigarettePack_Chernamorka">
-        <nominal>20</nominal>
+        <nominal>0</nominal>
         <lifetime>2700</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -25226,10 +25236,10 @@
         <usage name="Village" />
     </type>
     <type name="CigarettePack_Merkur">
-        <nominal>20</nominal>
+        <nominal>0</nominal>
         <lifetime>2700</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -25241,10 +25251,10 @@
         <usage name="Village" />
     </type>
     <type name="CigarettePack_Partyzanka">
-        <nominal>20</nominal>
+        <nominal>0</nominal>
         <lifetime>2700</lifetime>
         <restock>0</restock>
-        <min>10</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
