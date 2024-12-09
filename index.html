@@ -71,7 +71,11 @@
       th:nth-child(7),
       td:nth-child(7),
       th:nth-child(8),
-      td:nth-child(8) {
+      td:nth-child(8),
+      th:nth-child(9),
+      td:nth-child(9),
+      th:nth-child(10),
+      td:nth-child(10) {
         width: 10%;
       }
     </style>
@@ -140,7 +144,7 @@
           // Create Table Header
           const headerRow = document.createElement("tr");
           const headerNames = [
-            "Item Name", "Nominal", "Lifetime", "Restock", "Min", "QuantMin", "QuantMax", "Usages"
+            "Item Name", "Nominal", "Lifetime", "Restock", "Min", "QuantMin", "QuantMax", "Usages", "Tiers", "Tags"
           ];
           headerNames.forEach((header) => {
             const th = document.createElement("th");
@@ -166,6 +170,18 @@
               .map(usage => usage.getAttribute("name"))
               .join(", ");
 
+            // Get all tier values for the item
+            const valueElements = item.getElementsByTagName("value");
+            const tierValues = Array.from(valueElements)
+              .map(value => value.getAttribute("name"))
+              .join(", ");
+
+            // Get all tags for the item
+            const tagElements = item.getElementsByTagName("tag");
+            const tagValues = Array.from(tagElements)
+              .map(tag => tag.getAttribute("name"))
+              .join(", ");
+
             const rowValues = [
               itemName,
               nominal,
@@ -174,7 +190,9 @@
               min,
               quantmin,
               quantmax,
-              usageValues
+              usageValues,
+              tierValues,
+              tagValues
             ];
 
             rowValues.forEach((value) => {
