@@ -4,16 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XML Data Viewer</title>
+  <title>Homepage - Berkshire Blackout Chamber</title>
+  <meta name="description" content="A DayZ Community Server Hosted in London, United Kingdom" />
   <link href="styles.css" rel="stylesheet" />
 </head>
 
-<body class="font-sans p-12">
-  <div class="container">
-    <h1 class="text-center">Berkshire Blackout Chamber</h1>
-    <div id="last-wipe" class="text-center mb-4"></div>
-    <div class="max-w-prose mx-auto text-center mb-12 [&_p:last-of-type]:mb-0">
-      <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those strong enough to endure.</p>
+<body>
+  <div class="container py-12">
+    <div class="mb-12">
+      <h1 class="text-center">Berkshire Blackout Chamber</h1>
+      <div id="last-wipe" class="text-center mb-4"></div>
+      <div class="max-w-prose mx-auto text-center [&_p:last-of-type]:mb-0">
+        <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those strong enough to endure.</p>
+      </div>
     </div>
     <div id="accordion-container"></div>
   </div>
@@ -70,7 +73,7 @@
         const categoryNode = type.getElementsByTagName("category")[0];
         const categoryName = categoryNode
           ? categoryNode.getAttribute("name")
-          : "Uncategorized";
+          : "uncategorised";
         if (!categories[categoryName]) {
           categories[categoryName] = [];
         }
@@ -109,20 +112,20 @@
         panel.classList.add(
           "panel",
           "hidden", // Hidden by default
-          "bg-gray-50",
+          "bg-white",
           "border",
           "border-gray-200",
           "p-4",
-          "mt-2"
+          "mb-2"
         );
 
         // Wrap the table in a responsive div
         const tableWrapper = document.createElement("div");
-        tableWrapper.classList.add("overflow-x-auto");
+        tableWrapper.classList.add("overflow-x-auto", "bg-gray-100");
 
         // Create Table
         const table = document.createElement("table");
-        table.classList.add("min-w-full", "border-collapse", "table-auto", "mt-4");
+        table.classList.add("min-w-full", "border-collapse", "table-auto");
 
         // Create Table Header
         const headerRow = document.createElement("tr");
