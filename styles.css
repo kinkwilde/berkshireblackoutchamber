@@ -642,6 +642,10 @@ a {
   margin-right: auto;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -650,20 +654,12 @@ a {
   margin-bottom: 1rem;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mb-12 {
-  margin-bottom: 3rem;
 }
 
 .table {
@@ -726,24 +722,16 @@ a {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
+.p-12 {
+  padding: 3rem;
+}
+
 .p-3 {
   padding: 0.75rem;
 }
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-5 {
-  padding: 1.25rem;
-}
-
-.p-8 {
-  padding: 2rem;
-}
-
-.p-12 {
-  padding: 3rem;
 }
 
 .px-4 {
