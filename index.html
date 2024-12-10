@@ -1,228 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XML Data Viewer</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      .accordion {
-        background-color: #f1f1f1;
-        color: #444;
-        cursor: pointer;
-        padding: 10px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 16px;
-        margin-top: 10px;
-      }
-      .accordion:hover {
-        background-color: #ddd;
-      }
-      .active,
-      .accordion:focus {
-        background-color: #ccc;
-      }
-      .panel {
-        padding: 0 18px;
-        display: none;
-        overflow: hidden;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-      }
-      table,
-      th,
-      td {
-        border: 1px solid #ddd;
-      }
-      th,
-      td {
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-      /* Fixed column widths */
-      th:nth-child(1),
-      td:nth-child(1) {
-        width: 25%;
-      }
-      th:nth-child(2),
-      td:nth-child(2),
-      th:nth-child(3),
-      td:nth-child(3),
-      th:nth-child(4),
-      td:nth-child(4),
-      th:nth-child(5),
-      td:nth-child(5),
-      th:nth-child(6),
-      td:nth-child(6),
-      th:nth-child(7),
-      td:nth-child(7),
-      th:nth-child(8),
-      td:nth-child(8),
-      th:nth-child(9),
-      td:nth-child(9),
-      th:nth-child(10),
-      td:nth-child(10) {
-        width: 10%;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Item Categories</h1>
 
-    <div id="accordion-container"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XML Data Viewer</title>
+  <link href="styles.css" rel="stylesheet" />
+</head>
 
-    <script>
-      // Fetch XML file from the same directory (types.xml)
-      fetch("types.xml")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Failed to load XML file");
-          }
-          return response.text();
-        })
-        .then(xmlString => {
-          parseXMLAndGenerateAccordion(xmlString); // Call function after loading XML
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          alert("Error loading XML data");
+<body class="font-sans p-5">
+  <h1 class="text-2xl font-bold mb-6">Item Categories</h1>
+  <div id="accordion-container"></div>
+
+  <script>
+    // Fetch XML file from the same directory (types.xml)
+    fetch("types.xml")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to load XML file");
+        }
+        return response.text();
+      })
+      .then(xmlString => {
+        parseXMLAndGenerateAccordion(xmlString); // Call function after loading XML
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Error loading XML data");
+      });
+
+    // Function to parse XML data and generate accordion
+    function parseXMLAndGenerateAccordion(xmlString) {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+      const types = xmlDoc.getElementsByTagName("type");
+
+      // Group items by category
+      const categories = {};
+
+      for (let i = 0; i < types.length; i++) {
+        const type = types[i];
+        const categoryNode = type.getElementsByTagName("category")[0];
+        const categoryName = categoryNode
+          ? categoryNode.getAttribute("name")
+          : "Uncategorized";
+        if (!categories[categoryName]) {
+          categories[categoryName] = [];
+        }
+        categories[categoryName].push(type);
+      }
+
+      // Create accordion for each category
+      const accordionContainer = document.getElementById("accordion-container");
+      for (const categoryName in categories) {
+        const categoryItems = categories[categoryName];
+
+        // Create Accordion Button with item count
+        const itemCount = categoryItems.length;
+        const accordionButton = document.createElement("button");
+        accordionButton.classList.add(
+          "accordion",
+          "w-full",
+          "text-left",
+          "bg-gray-100",
+          "text-gray-700",
+          "p-3",
+          "font-medium",
+          "border",
+          "border-gray-300",
+          "rounded-md",
+          "hover:bg-gray-200",
+          "focus:bg-gray-200",
+          "focus:outline-none",
+          "transition-colors",
+          "mb-2"
+        );
+        accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
+
+        // Create Panel for category content
+        const panel = document.createElement("div");
+        panel.classList.add(
+          "panel",
+          "hidden", // Hidden by default
+          "bg-gray-50",
+          "border",
+          "border-gray-200",
+          "p-4",
+          "mt-2"
+        );
+
+        // Create Table
+        const table = document.createElement("table");
+        table.classList.add("min-w-full", "border-collapse", "table-auto", "mt-4");
+
+        // Create Table Header
+        const headerRow = document.createElement("tr");
+        const headerNames = [
+          "Item Name", "Nominal", "Lifetime", "Restock", "Min", "QuantMin", "QuantMax", "Usages", "Tiers", "Tags"
+        ];
+        headerNames.forEach((header) => {
+          const th = document.createElement("th");
+          th.classList.add(
+            "px-4", "py-2", "text-left", "font-semibold", "text-sm", "bg-gray-100", "border"
+          );
+          th.textContent = header;
+          headerRow.appendChild(th);
+        });
+        table.appendChild(headerRow);
+
+        // Add items in the category to the table
+        categoryItems.forEach((item) => {
+          const row = document.createElement("tr");
+          const itemName = item.getAttribute("name");
+          const nominal = item.getElementsByTagName("nominal")[0].textContent;
+          const lifetime = item.getElementsByTagName("lifetime")[0].textContent;
+          const restock = item.getElementsByTagName("restock")[0].textContent;
+          const min = item.getElementsByTagName("min")[0].textContent;
+          const quantmin = item.getElementsByTagName("quantmin")[0].textContent;
+          const quantmax = item.getElementsByTagName("quantmax")[0].textContent;
+
+          // Get all usages for the item
+          const usageElements = item.getElementsByTagName("usage");
+          const usageValues = Array.from(usageElements)
+            .map(usage => usage.getAttribute("name"))
+            .join(", ");
+
+          // Get all tier values for the item
+          const valueElements = item.getElementsByTagName("value");
+          const tierValues = Array.from(valueElements)
+            .map(value => value.getAttribute("name"))
+            .join(", ");
+
+          // Get all tags for the item
+          const tagElements = item.getElementsByTagName("tag");
+          const tagValues = Array.from(tagElements)
+            .map(tag => tag.getAttribute("name"))
+            .join(", ");
+
+          const rowValues = [
+            itemName,
+            nominal,
+            lifetime,
+            restock,
+            min,
+            quantmin,
+            quantmax,
+            usageValues,
+            tierValues,
+            tagValues
+          ];
+
+          rowValues.forEach((value) => {
+            const td = document.createElement("td");
+            td.classList.add("px-4", "py-2", "border", "text-sm");
+            td.textContent = value;
+            row.appendChild(td);
+          });
+
+          table.appendChild(row);
         });
 
-      // Function to parse XML data and generate accordion
-      function parseXMLAndGenerateAccordion(xmlString) {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlString, "application/xml");
-        const types = xmlDoc.getElementsByTagName("type");
+        // Append the table to the panel
+        panel.appendChild(table);
 
-        // Group items by category
-        const categories = {};
+        // Append the accordion button and panel to the container
+        accordionContainer.appendChild(accordionButton);
+        accordionContainer.appendChild(panel);
 
-        for (let i = 0; i < types.length; i++) {
-          const type = types[i];
-          const categoryNode = type.getElementsByTagName("category")[0];
-          const categoryName = categoryNode
-            ? categoryNode.getAttribute("name")
-            : "Uncategorized";
-          if (!categories[categoryName]) {
-            categories[categoryName] = [];
+        // Add click event for accordion functionality
+        accordionButton.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const panel = this.nextElementSibling;
+          if (panel.classList.contains("hidden")) {
+            panel.classList.remove("hidden");
+          } else {
+            panel.classList.add("hidden");
           }
-          categories[categoryName].push(type);
-        }
-
-        // Create accordion for each category
-        const accordionContainer = document.getElementById("accordion-container");
-        for (const categoryName in categories) {
-          const categoryItems = categories[categoryName];
-
-          // Create Accordion Button with item count
-          const itemCount = categoryItems.length;
-          const accordionButton = document.createElement("button");
-          accordionButton.classList.add("accordion");
-          accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
-
-          // Create Panel for category content
-          const panel = document.createElement("div");
-          panel.classList.add("panel");
-
-          // Create Table
-          const table = document.createElement("table");
-
-          // Create Table Header
-          const headerRow = document.createElement("tr");
-          const headerNames = [
-            "Item Name", "Nominal", "Lifetime", "Restock", "Min", "QuantMin", "QuantMax", "Usages", "Tiers", "Tags"
-          ];
-          headerNames.forEach((header) => {
-            const th = document.createElement("th");
-            th.textContent = header;
-            headerRow.appendChild(th);
-          });
-          table.appendChild(headerRow);
-
-          // Add items in the category to the table
-          categoryItems.forEach((item) => {
-            const row = document.createElement("tr");
-            const itemName = item.getAttribute("name");
-            const nominal = item.getElementsByTagName("nominal")[0].textContent;
-            const lifetime = item.getElementsByTagName("lifetime")[0].textContent;
-            const restock = item.getElementsByTagName("restock")[0].textContent;
-            const min = item.getElementsByTagName("min")[0].textContent;
-            const quantmin = item.getElementsByTagName("quantmin")[0].textContent;
-            const quantmax = item.getElementsByTagName("quantmax")[0].textContent;
-
-            // Get all usages for the item
-            const usageElements = item.getElementsByTagName("usage");
-            const usageValues = Array.from(usageElements)
-              .map(usage => usage.getAttribute("name"))
-              .join(", ");
-
-            // Get all tier values for the item
-            const valueElements = item.getElementsByTagName("value");
-            const tierValues = Array.from(valueElements)
-              .map(value => value.getAttribute("name"))
-              .join(", ");
-
-            // Get all tags for the item
-            const tagElements = item.getElementsByTagName("tag");
-            const tagValues = Array.from(tagElements)
-              .map(tag => tag.getAttribute("name"))
-              .join(", ");
-
-            const rowValues = [
-              itemName,
-              nominal,
-              lifetime,
-              restock,
-              min,
-              quantmin,
-              quantmax,
-              usageValues,
-              tierValues,
-              tagValues
-            ];
-
-            rowValues.forEach((value) => {
-              const td = document.createElement("td");
-              td.textContent = value;
-              row.appendChild(td);
-            });
-
-            table.appendChild(row);
-          });
-
-          // Append the table to the panel
-          panel.appendChild(table);
-
-          // Append the accordion button and panel to the container
-          accordionContainer.appendChild(accordionButton);
-          accordionContainer.appendChild(panel);
-
-          // Add click event for accordion functionality
-          accordionButton.addEventListener("click", function () {
-            this.classList.toggle("active");
-            const panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-              panel.style.display = "none";
-            } else {
-              panel.style.display = "block";
-            }
-          });
-        }
+        });
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
