@@ -8,11 +8,38 @@
   <link href="styles.css" rel="stylesheet" />
 </head>
 
-<body class="font-sans p-5">
-  <h1 class="text-2xl font-bold mb-6">Item Categories</h1>
-  <div id="accordion-container"></div>
-
+<body class="font-sans p-12">
+  <div class="container">
+    <h1 class="text-center">Berkshire Blackout Chamber</h1>
+    <div id="last-wipe" class="text-center mb-4"></div>
+    <div class="max-w-prose mx-auto text-center mb-12 [&_p:last-of-type]:mb-0">
+      <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those strong enough to endure.</p>
+    </div>
+    <div id="accordion-container"></div>
+  </div>
   <script>
+    // Set a fixed wipe date
+    const lastWipeDate = new Date("2024-12-10T00:00:00Z"); // Example: January 1, 2024
+
+    // Function to calculate and display time since the last wipe
+    function updateLastWipeTime() {
+      const now = new Date();
+      const elapsedTime = now - lastWipeDate;
+
+      // Convert milliseconds to days, hours, and minutes
+      const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+
+      // Display the result
+      const lastWipeDiv = document.getElementById("last-wipe");
+      lastWipeDiv.textContent = `Time since last wipe: ${days} days, ${hours} hours, ${minutes} minutes`;
+    }
+
+    // Update the time every minute
+    updateLastWipeTime();
+    setInterval(updateLastWipeTime, 60000);
+
     // Fetch XML file from the same directory (types.xml)
     fetch("types.xml")
       .then(response => {
@@ -89,6 +116,10 @@
           "mt-2"
         );
 
+        // Wrap the table in a responsive div
+        const tableWrapper = document.createElement("div");
+        tableWrapper.classList.add("overflow-x-auto");
+
         // Create Table
         const table = document.createElement("table");
         table.classList.add("min-w-full", "border-collapse", "table-auto", "mt-4");
@@ -160,8 +191,11 @@
           table.appendChild(row);
         });
 
-        // Append the table to the panel
-        panel.appendChild(table);
+        // Append the table to the wrapper
+        tableWrapper.appendChild(table);
+
+        // Append the wrapper to the panel
+        panel.appendChild(tableWrapper);
 
         // Append the accordion button and panel to the container
         accordionContainer.appendChild(accordionButton);
