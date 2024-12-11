@@ -15,8 +15,10 @@
       <h1 class="text-center">Berkshire Blackout Chamber</h1>
       <div id="last-wipe" class="text-center mb-4"></div>
       <div class="max-w-prose mx-auto text-center [&_p:last-of-type]:mb-0">
-        <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those strong enough to endure.</p>
-        <p>Join the Discord <br> <a href="https://discord.gg/k9fRuhe5kw" target="_blank">https://discord.gg/k9fRuhe5kw</a></p>
+        <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those strong
+          enough to endure.</p>
+        <p><span class="block font-bold">Join the Discord</span> <a href="https://discord.gg/k9fRuhe5kw"
+            target="_blank">https://discord.gg/k9fRuhe5kw</a></p>
       </div>
     </div>
     <div id="accordion-container"></div>
@@ -68,6 +70,8 @@
 
       // Group items by category
       const categories = {};
+      const categorySums = {}; // To store total nominal values for each category
+      let grandTotal = 0; // To store the grand total nominal value
 
       for (let i = 0; i < types.length; i++) {
         const type = types[i];
@@ -75,16 +79,31 @@
         const categoryName = categoryNode
           ? categoryNode.getAttribute("name")
           : "uncategorised";
+        const nominalValue = parseInt(type.getElementsByTagName("nominal")[0].textContent, 10);
+
+        // Initialize category if not already present
         if (!categories[categoryName]) {
           categories[categoryName] = [];
+          categorySums[categoryName] = 0;
         }
+
         categories[categoryName].push(type);
+        categorySums[categoryName] += nominalValue;
+        grandTotal += nominalValue;
       }
 
-      // Create accordion for each category
+      // Create a container
       const accordionContainer = document.getElementById("accordion-container");
+
+      // Create a container for the grand total
+      const grandTotalDiv = document.createElement("p");
+      grandTotalDiv.classList.add("mb-0", "uppercase", "text-right", "text-sm", "font-bold");
+      grandTotalDiv.textContent = `Total Items: ${grandTotal}`;
+
+      // Create accordion for each category
       for (const categoryName in categories) {
         const categoryItems = categories[categoryName];
+        const totalNominal = categorySums[categoryName];
 
         // Create Accordion Button with item count
         const itemCount = categoryItems.length;
@@ -93,6 +112,7 @@
           "accordion",
           "w-full",
           "text-left",
+          "uppercase",
           "bg-gray-100",
           "text-gray-700",
           "p-3",
@@ -104,7 +124,7 @@
           "focus:bg-gray-200",
           "focus:outline-none",
           "transition-colors",
-          "mb-2"
+          "mb-4"
         );
         accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
 
@@ -117,8 +137,14 @@
           "border",
           "border-gray-200",
           "p-4",
-          "mb-2"
+          "mb-4"
         );
+
+        // Add the total nominal value at the top of the panel
+        const totalDiv = document.createElement("p");
+        totalDiv.classList.add("mb-4", "uppercase", "text-sm", "font-bold");
+        totalDiv.textContent = `Total Items: ${totalNominal}`;
+        panel.appendChild(totalDiv);
 
         // Wrap the table in a responsive div
         const tableWrapper = document.createElement("div");
@@ -204,6 +230,7 @@
         // Append the accordion button and panel to the container
         accordionContainer.appendChild(accordionButton);
         accordionContainer.appendChild(panel);
+        accordionContainer.appendChild(grandTotalDiv);
 
         // Add click event for accordion functionality
         accordionButton.addEventListener("click", function () {
