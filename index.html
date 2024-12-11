@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homepage - Berkshire Blackout Chamber</title>
   <meta name="description" content="A DayZ Community Server Hosted in London, United Kingdom" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="styles.css" rel="stylesheet" />
 </head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col">
   <div class="bg-red-100 border-y border-red-400 text-red-700" role="alert">
     <div class="container py-2 [&_p:last-of-type]:mb-0">
-      <p class="text-sm text-center uppercase">Next wipe date: 16/12/2024</p>
+      <p class="text-sm text-center uppercase">Still Under Development - Next wipe date: 16/12/2024</p>
     </div>
   </div>
   <div class="bg-white flex-grow">
@@ -21,8 +22,8 @@
         <h1 class="text-center">Berkshire Blackout Chamber</h1>
         <div id="last-wipe" class="text-center mb-4"></div>
         <div class="max-w-prose mx-auto text-center [&_p:last-of-type]:mb-0">
-          <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those strong
-            enough to endure.</p>
+          <p>Embark on a perilous journey north, where survival is earned and the path to safety is forged by those
+            strong enough to endure.</p>
           <p><span class="block font-bold">Join the Discord</span> <a href="https://discord.gg/k9fRuhe5kw"
               target="_blank">https://discord.gg/k9fRuhe5kw</a></p>
         </div>
@@ -36,226 +37,205 @@
     </div>
   </div>
   <script>
-    // Set a fixed wipe date
-    const lastWipeDate = new Date("2024-12-10T20:43:47Z"); // Example: January 1, 2024
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Set a fixed wipe date
+      const lastWipeDate = new Date("2024-12-10T20:43:47Z");
 
-    // Function to calculate and display time since the last wipe
-    function updateLastWipeTime() {
-      const now = new Date();
-      const elapsedTime = now - lastWipeDate;
+      function updateLastWipeTime() {
+        const now = new Date();
+        const elapsedTime = now - lastWipeDate;
 
-      // Convert milliseconds to days, hours, and minutes
-      const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+        const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
 
-      // Display the result
-      const lastWipeDiv = document.getElementById("last-wipe");
-      lastWipeDiv.textContent = `Time since last wipe: ${days} days, ${hours} hours, ${minutes} minutes`;
-    }
+        const lastWipeDiv = document.getElementById("last-wipe");
+        lastWipeDiv.textContent = `Time since last wipe: ${days} days, ${hours} hours, ${minutes} minutes`;
+      }
 
-    // Update the time every minute
-    updateLastWipeTime();
-    setInterval(updateLastWipeTime, 60000);
+      updateLastWipeTime();
+      setInterval(updateLastWipeTime, 60000);
 
-    // Fetch XML file from the same directory (types.xml)
-    fetch("types.xml")
-      .then(response => {
+      // Fetch XML data with graceful error handling
+      try {
+        const response = await fetch("types.xml");
         if (!response.ok) {
           throw new Error("Failed to load XML file");
         }
-        return response.text();
-      })
-      .then(xmlString => {
-        parseXMLAndGenerateAccordion(xmlString); // Call function after loading XML
-      })
-      .catch(error => {
+        const xmlString = await response.text();
+        parseXMLAndGenerateAccordion(xmlString);
+      } catch (error) {
         console.error("Error:", error);
-        alert("Error loading XML data");
-      });
+        alert("Error loading XML data. Please check the console for more details.");
+      }
 
-    // Function to parse XML data and generate accordion
-    function parseXMLAndGenerateAccordion(xmlString) {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlString, "application/xml");
-      const types = xmlDoc.getElementsByTagName("type");
+      function parseXMLAndGenerateAccordion(xmlString) {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+        const types = xmlDoc.getElementsByTagName("type");
 
-      // Group items by category
-      const categories = {};
-      const categorySums = {}; // To store total nominal values for each category
-      let grandTotal = 0; // To store the grand total nominal value
+        const categories = {};
+        const categorySums = {};
+        const categoryMinSums = {};
+        let grandTotal = 0;
 
-      for (let i = 0; i < types.length; i++) {
-        const type = types[i];
-        const categoryNode = type.getElementsByTagName("category")[0];
-        const categoryName = categoryNode
-          ? categoryNode.getAttribute("name")
-          : "uncategorised";
-        const nominalValue = parseInt(type.getElementsByTagName("nominal")[0].textContent, 10);
+        for (let i = 0; i < types.length; i++) {
+          const type = types[i];
+          const categoryNode = type.getElementsByTagName("category")[0];
+          const categoryName = categoryNode
+            ? categoryNode.getAttribute("name")
+            : "uncategorised";
+          const nominalValue = parseInt(type.getElementsByTagName("nominal")[0].textContent, 10);
+          const minValue = parseInt(type.getElementsByTagName("min")[0].textContent, 10);
 
-        // Initialize category if not already present
-        if (!categories[categoryName]) {
-          categories[categoryName] = [];
-          categorySums[categoryName] = 0;
+          if (!categories[categoryName]) {
+            categories[categoryName] = [];
+            categorySums[categoryName] = 0;
+            categoryMinSums[categoryName] = 0;
+          }
+
+          categories[categoryName].push(type);
+          categorySums[categoryName] += nominalValue;
+          categoryMinSums[categoryName] += minValue;
+          grandTotal += nominalValue;
         }
 
-        categories[categoryName].push(type);
-        categorySums[categoryName] += nominalValue;
-        grandTotal += nominalValue;
-      }
+        const accordionContainer = document.getElementById("accordion-container");
 
-      // Create a container
-      const accordionContainer = document.getElementById("accordion-container");
+        const grandTotalDiv = document.createElement("p");
+        grandTotalDiv.classList.add("mb-0", "uppercase", "text-right", "text-sm", "font-bold");
+        grandTotalDiv.textContent = `Total Items: ${grandTotal}`;
 
-      // Create a container for the grand total
-      const grandTotalDiv = document.createElement("p");
-      grandTotalDiv.classList.add("mb-0", "uppercase", "text-right", "text-sm", "font-bold");
-      grandTotalDiv.textContent = `Total Items: ${grandTotal}`;
+        for (const categoryName in categories) {
+          const categoryItems = categories[categoryName];
+          const totalNominal = categorySums[categoryName];
+          const totalMin = categoryMinSums[categoryName];
 
-      // Create accordion for each category
-      for (const categoryName in categories) {
-        const categoryItems = categories[categoryName];
-        const totalNominal = categorySums[categoryName];
-
-        // Create Accordion Button with item count
-        const itemCount = categoryItems.length;
-        const accordionButton = document.createElement("button");
-        accordionButton.classList.add(
-          "accordion",
-          "w-full",
-          "text-left",
-          "uppercase",
-          "bg-gray-100",
-          "text-gray-700",
-          "p-3",
-          "font-medium",
-          "border",
-          "border-gray-300",
-          "rounded-md",
-          "hover:bg-gray-200",
-          "focus:bg-gray-200",
-          "focus:outline-none",
-          "transition-colors",
-          "mb-4"
-        );
-        accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
-
-        // Create Panel for category content
-        const panel = document.createElement("div");
-        panel.classList.add(
-          "panel",
-          "hidden", // Hidden by default
-          "bg-white",
-          "border",
-          "border-gray-200",
-          "p-4",
-          "mb-4"
-        );
-
-        // Add the total nominal value at the top of the panel
-        const totalDiv = document.createElement("p");
-        totalDiv.classList.add("mb-4", "uppercase", "text-sm", "font-bold");
-        totalDiv.textContent = `Total Items: ${totalNominal}`;
-        panel.appendChild(totalDiv);
-
-        // Wrap the table in a responsive div
-        const tableWrapper = document.createElement("div");
-        tableWrapper.classList.add("overflow-x-auto", "bg-gray-100");
-
-        // Create Table
-        const table = document.createElement("table");
-        table.classList.add("min-w-full", "border-collapse", "table-auto");
-
-        // Create Table Header
-        const headerRow = document.createElement("tr");
-        const headerNames = [
-          "Item Name", "Nominal", "Lifetime", "Restock", "Min", "QuantMin", "QuantMax", "Usages", "Tiers", "Tags"
-        ];
-        headerNames.forEach((header) => {
-          const th = document.createElement("th");
-          th.classList.add(
-            "px-4", "py-2", "text-left", "font-semibold", "text-sm", "bg-gray-100", "border"
+          const itemCount = categoryItems.length;
+          const accordionButton = document.createElement("button");
+          accordionButton.classList.add(
+            "accordion",
+            "w-full",
+            "text-left",
+            "uppercase",
+            "bg-gray-100",
+            "text-gray-700",
+            "p-3",
+            "font-medium",
+            "border",
+            "border-gray-300",
+            "rounded-md",
+            "hover:bg-gray-200",
+            "focus:bg-gray-200",
+            "focus:outline-none",
+            "transition-colors",
+            "mb-4"
           );
-          th.textContent = header;
-          headerRow.appendChild(th);
-        });
-        table.appendChild(headerRow);
+          accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
 
-        // Add items in the category to the table
-        categoryItems.forEach((item) => {
-          const row = document.createElement("tr");
-          const itemName = item.getAttribute("name");
-          const nominal = item.getElementsByTagName("nominal")[0].textContent;
-          const lifetime = item.getElementsByTagName("lifetime")[0].textContent;
-          const restock = item.getElementsByTagName("restock")[0].textContent;
-          const min = item.getElementsByTagName("min")[0].textContent;
-          const quantmin = item.getElementsByTagName("quantmin")[0].textContent;
-          const quantmax = item.getElementsByTagName("quantmax")[0].textContent;
+          const panel = document.createElement("div");
+          panel.classList.add(
+            "panel",
+            "hidden",
+            "bg-white",
+            "border",
+            "border-gray-200",
+            "p-4",
+            "mb-4"
+          );
 
-          // Get all usages for the item
-          const usageElements = item.getElementsByTagName("usage");
-          const usageValues = Array.from(usageElements)
-            .map(usage => usage.getAttribute("name"))
-            .join(", ");
+          const totalDiv = document.createElement("p");
+          totalDiv.classList.add("mb-2", "uppercase", "text-sm", "font-bold");
+          totalDiv.textContent = `Total Items: ${totalNominal} | Total Minimum Items: ${totalMin}`;
+          panel.appendChild(totalDiv);
 
-          // Get all tier values for the item
-          const valueElements = item.getElementsByTagName("value");
-          const tierValues = Array.from(valueElements)
-            .map(value => value.getAttribute("name"))
-            .join(", ");
+          const tableWrapper = document.createElement("div");
+          tableWrapper.classList.add("overflow-x-auto", "bg-gray-100");
 
-          // Get all tags for the item
-          const tagElements = item.getElementsByTagName("tag");
-          const tagValues = Array.from(tagElements)
-            .map(tag => tag.getAttribute("name"))
-            .join(", ");
+          const table = document.createElement("table");
+          table.classList.add("min-w-full", "border-collapse", "table-auto");
 
-          const rowValues = [
-            itemName,
-            nominal,
-            lifetime,
-            restock,
-            min,
-            quantmin,
-            quantmax,
-            usageValues,
-            tierValues,
-            tagValues
+          const headerRow = document.createElement("tr");
+          const headerNames = [
+            "Name", "Nominal", "Lifetime", "Restock", "Min", "QuantMin", "QuantMax", "Tags", "Usage", "Tiers"
           ];
+          headerNames.forEach((header) => {
+            const th = document.createElement("th");
+            th.classList.add(
+              "px-4", "py-2", "text-left", "font-semibold", "text-sm", "bg-gray-100", "border"
+            );
+            th.textContent = header;
+            headerRow.appendChild(th);
+          });
+          table.appendChild(headerRow);
 
-          rowValues.forEach((value) => {
-            const td = document.createElement("td");
-            td.classList.add("px-4", "py-2", "border", "text-sm");
-            td.textContent = value;
-            row.appendChild(td);
+          categoryItems.forEach((item) => {
+            const row = document.createElement("tr");
+            const itemName = item.getAttribute("name");
+            const nominal = item.getElementsByTagName("nominal")[0].textContent;
+            const lifetime = item.getElementsByTagName("lifetime")[0].textContent;
+            const restock = item.getElementsByTagName("restock")[0].textContent;
+            const min = item.getElementsByTagName("min")[0].textContent;
+            const quantmin = item.getElementsByTagName("quantmin")[0].textContent;
+            const quantmax = item.getElementsByTagName("quantmax")[0].textContent;
+
+            const usageElements = item.getElementsByTagName("usage");
+            const usageValues = Array.from(usageElements)
+              .map(usage => usage.getAttribute("name"))
+              .join(", ");
+
+            const valueElements = item.getElementsByTagName("value");
+            const tierValues = Array.from(valueElements)
+              .map(value => value.getAttribute("name"))
+              .join(", ");
+
+            const tagElements = item.getElementsByTagName("tag");
+            const tagValues = Array.from(tagElements)
+              .map(tag => tag.getAttribute("name"))
+              .join(", ");
+
+            const rowValues = [
+              itemName,
+              nominal,
+              lifetime,
+              restock,
+              min,
+              quantmin,
+              quantmax,
+              tagValues,
+              usageValues,
+              tierValues
+            ];
+
+            rowValues.forEach((value) => {
+              const td = document.createElement("td");
+              td.classList.add("px-4", "py-2", "border", "text-sm");
+              td.textContent = value;
+              row.appendChild(td);
+            });
+
+            table.appendChild(row);
           });
 
-          table.appendChild(row);
-        });
+          tableWrapper.appendChild(table);
+          panel.appendChild(tableWrapper);
+          accordionContainer.appendChild(accordionButton);
+          accordionContainer.appendChild(panel);
 
-        // Append the table to the wrapper
-        tableWrapper.appendChild(table);
+          accordionButton.addEventListener("click", function () {
+            this.classList.toggle("active");
+            const panel = this.nextElementSibling;
+            if (panel.classList.contains("hidden")) {
+              panel.classList.remove("hidden");
+            } else {
+              panel.classList.add("hidden");
+            }
+          });
+        }
 
-        // Append the wrapper to the panel
-        panel.appendChild(tableWrapper);
-
-        // Append the accordion button and panel to the container
-        accordionContainer.appendChild(accordionButton);
-        accordionContainer.appendChild(panel);
         accordionContainer.appendChild(grandTotalDiv);
-
-        // Add click event for accordion functionality
-        accordionButton.addEventListener("click", function () {
-          this.classList.toggle("active");
-          const panel = this.nextElementSibling;
-          if (panel.classList.contains("hidden")) {
-            panel.classList.remove("hidden");
-          } else {
-            panel.classList.add("hidden");
-          }
-        });
       }
-    }
+    });
   </script>
 </body>
 
