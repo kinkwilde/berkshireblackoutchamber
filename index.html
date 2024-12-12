@@ -106,7 +106,8 @@
         grandTotalDiv.classList.add("mb-0", "uppercase", "text-right", "text-sm", "font-bold");
         grandTotalDiv.textContent = `Total Items: ${grandTotal}`;
 
-        for (const categoryName in categories) {
+        const sortedCategories = Object.keys(categories).sort();
+        for (const categoryName of sortedCategories) {
           const categoryItems = categories[categoryName];
           const totalNominal = categorySums[categoryName];
           const totalMin = categoryMinSums[categoryName];
@@ -118,17 +119,15 @@
             "w-full",
             "text-left",
             "uppercase",
-            "bg-gray-100",
-            "text-gray-700",
+            "bg-gray-50",
+            "text-black",
+            "text-sm",
             "p-3",
             "font-medium",
             "border",
-            "border-gray-300",
+            "border-gray-200",
             "rounded-md",
-            "hover:bg-gray-200",
-            "focus:bg-gray-200",
             "focus:outline-none",
-            "transition-colors",
             "mb-4"
           );
           accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
@@ -139,18 +138,18 @@
             "hidden",
             "bg-white",
             "border",
-            "border-gray-200",
+            "border-gray-100",
             "p-4",
             "mb-4"
           );
 
           const totalDiv = document.createElement("p");
-          totalDiv.classList.add("mb-2", "uppercase", "text-sm", "font-bold");
+          totalDiv.classList.add("mb-4", "uppercase", "text-sm", "font-bold");
           totalDiv.textContent = `Total Items: ${totalNominal} | Total Minimum Items: ${totalMin}`;
           panel.appendChild(totalDiv);
 
           const tableWrapper = document.createElement("div");
-          tableWrapper.classList.add("overflow-x-auto", "bg-gray-100");
+          tableWrapper.classList.add("overflow-x-auto", "bg-white");
 
           const table = document.createElement("table");
           table.classList.add("min-w-full", "border-collapse", "table-auto");
@@ -162,14 +161,18 @@
           headerNames.forEach((header) => {
             const th = document.createElement("th");
             th.classList.add(
-              "px-4", "py-2", "text-left", "font-semibold", "text-sm", "bg-gray-100", "border"
+              "px-4", "py-2", "text-left", "font-semibold", "text-sm", "bg-gray-50", "border", "border-gray-200"
             );
             th.textContent = header;
             headerRow.appendChild(th);
           });
           table.appendChild(headerRow);
 
-          categoryItems.forEach((item) => {
+          const sortedItems = categoryItems.sort((a, b) => {
+            return a.getAttribute("name").localeCompare(b.getAttribute("name"));
+          });
+
+          sortedItems.forEach((item) => {
             const row = document.createElement("tr");
             const itemName = item.getAttribute("name");
             const nominal = item.getElementsByTagName("nominal")[0].textContent;
@@ -209,7 +212,7 @@
 
             rowValues.forEach((value) => {
               const td = document.createElement("td");
-              td.classList.add("px-4", "py-2", "border", "text-sm");
+              td.classList.add("px-4", "py-2", "text-sm", "border", "border-gray-200");
               td.textContent = value;
               row.appendChild(td);
             });
