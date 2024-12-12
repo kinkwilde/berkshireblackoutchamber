@@ -56,7 +56,6 @@
       updateLastWipeTime();
       setInterval(updateLastWipeTime, 60000);
 
-      // Fetch XML data with graceful error handling
       try {
         const response = await fetch("types.xml");
         if (!response.ok) {
@@ -106,7 +105,13 @@
         grandTotalDiv.classList.add("mb-0", "uppercase", "text-right", "text-sm", "font-bold");
         grandTotalDiv.textContent = `Total Items: ${grandTotal}`;
 
-        const sortedCategories = Object.keys(categories).sort();
+        const sortedCategories = Object.keys(categories)
+          .sort((a, b) => {
+            if (a.toLowerCase() === 'uncategorised') return 1;
+            if (b.toLowerCase() === 'uncategorised') return -1;
+            return a.localeCompare(b);
+          });
+
         for (const categoryName of sortedCategories) {
           const categoryItems = categories[categoryName];
           const totalNominal = categorySums[categoryName];
