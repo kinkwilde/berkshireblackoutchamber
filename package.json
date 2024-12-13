@@ -4,6 +4,8 @@
   "description": "description",
   "main": "tailwind.config.js",
   "scripts": {
+    "prettier:check": "npx prettier --check .",
+    "prettier:write": "npx prettier --write .",
     "tailwind:build": "npx tailwindcss -i ./tailwind.css -o ./styles.css",
     "tailwind:watch": "npx tailwindcss -i ./tailwind.css -o ./styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/kinkwilde/berkshireblackoutchamber/issues"
   },
-  "homepage": "https://kinkwilde.github.io/berkshireblackoutchamber/"
+  "homepage": "https://kinkwilde.github.io/berkshireblackoutchamber/",
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  }
 }

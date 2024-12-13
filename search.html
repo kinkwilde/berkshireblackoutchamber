@@ -1,153 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Loot Table Search - Berkshire Blackout Chamber</title>
-    <meta name="description" content="A DayZ Community Server Hosted in London, United Kingdom" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta
+      name="description"
+      content="A DayZ Community Server Hosted in London, United Kingdom"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="styles.css" rel="stylesheet" />
-</head>
+  </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <div class="bg-red-100 border-y border-red-400 text-red-700" role="alert">
-        <div class="container py-2 [&_p:last-of-type]:mb-0">
-            <p class="text-sm text-center uppercase">Still Under Development - Next wipe date: 16/12/2024</p>
-        </div>
+  <body class="flex min-h-screen flex-col bg-gray-100">
+    <div class="border-y border-red-400 bg-red-100 text-red-700" role="alert">
+      <div class="container py-2 [&_p:last-of-type]:mb-0">
+        <p class="text-center text-sm uppercase">
+          Still Under Development - Next wipe date: 16/12/2024
+        </p>
+      </div>
     </div>
-    <div class="bg-white flex-grow">
-        <div class="container py-12">
-            <div class="mb-12">
-                <h1 class="text-center">Loot Table Search</h1>
-                <div class="max-w-prose mx-auto text-center">
-                    <p class="mb-12">Search the loot table to find information on specific items.</p>
-                    <div>
-                        <label for="typeName" class="sr-only">Enter Item Type Name</label>
-                        <input type="text" id="typeName" placeholder="e.g. GreenBellPepper" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Search</button>
-                    </div>
-                </div>
+    <div class="flex-grow bg-white">
+      <div class="container py-12">
+        <div class="mb-12">
+          <h1 class="text-center">Loot Table Search</h1>
+          <div class="mx-auto max-w-prose text-center">
+            <p class="mb-12">
+              Search the loot table to find information on specific items.
+            </p>
+            <div>
+              <label for="typeName" class="sr-only">Enter Item Type Name</label>
+              <input
+                type="text"
+                id="typeName"
+                placeholder="e.g. GreenBellPepper"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              />
+              <button
+                class="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+              >
+                Search
+              </button>
             </div>
-            <p id="totals" class="mb-2 uppercase text-sm font-bold hidden">Total Items: 0 | Total Minimum Items: 0</p>
-            <div id="output" class="overflow-x-auto bg-white hidden">
-                <table class="min-w-max w-full table-auto border-collapse">
-                    <thead>
-                        <tr>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Name
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Nominal
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Lifetime
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Restock
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Min
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                QuantMin
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                QuantMax
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Tags
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Usage
-                            </th>
-                            <th class="px-4 py-2 text-left font-semibold text-sm bg-gray-50 border border-gray-200">
-                                Tiers
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody" class="bg-white divide-y divide-gray-200"></tbody>
-                </table>
-            </div>
+          </div>
         </div>
+        <p id="totals" class="mb-2 hidden text-sm font-bold uppercase">
+          Total Items: 0 | Total Minimum Items: 0
+        </p>
+        <div id="output" class="hidden overflow-x-auto bg-white">
+          <table class="w-full min-w-max table-auto border-collapse">
+            <thead>
+              <tr>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Name
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Nominal
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Lifetime
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Restock
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Min
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  QuantMin
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  QuantMax
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Tags
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Usage
+                </th>
+                <th
+                  class="border border-gray-200 bg-gray-50 px-4 py-2 text-left text-sm font-semibold"
+                >
+                  Tiers
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              id="tableBody"
+              class="divide-y divide-gray-200 bg-white"
+            ></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="border-y border-black bg-gray-900 text-white" role="alert">
+      <div class="container py-2 [&_p:last-of-type]:mb-0">
+        <p class="text-center text-sm uppercase">
+          Copyright <span id="copyright"></span> &copy; Berkshire Blackout
+          Chamber
+        </p>
+      </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            async function filterXML() {
-                const typeName = document.getElementById('typeName').value.toLowerCase();
-                try {
-                    const response = await fetch("types.xml");
-                    if (!response.ok) throw new Error("Failed to load XML file");
-                    const xmlString = await response.text();
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(xmlString, "application/xml");
-                    const types = xmlDoc.getElementsByTagName("type");
+      document.addEventListener('DOMContentLoaded', () => {
+        const currentYear = new Date().getFullYear();
+        const copyrightWrapper = document.getElementById('copyright');
+        copyrightWrapper.textContent = currentYear;
 
-                    const filteredTypes = Array.from(types).filter(type => {
-                        const name = type.getAttribute('name').toLowerCase();
-                        return name.includes(typeName);
-                    });
+        async function filterXML() {
+          const typeName = document
+            .getElementById('typeName')
+            .value.toLowerCase();
+          try {
+            const response = await fetch('types.xml');
+            if (!response.ok) throw new Error('Failed to load XML file');
+            const xmlString = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
+            const types = xmlDoc.getElementsByTagName('type');
 
-                    generateTable(filteredTypes);
-                } catch (error) {
-                    console.error("Error fetching XML:", error);
-                    alert("Error loading XML data.");
-                }
-            }
+            const filteredTypes = Array.from(types).filter((type) => {
+              const name = type.getAttribute('name').toLowerCase();
+              return name.includes(typeName);
+            });
 
-            function generateTable(filteredTypes) {
-                const tableBody = document.getElementById("tableBody");
-                const totals = document.getElementById("totals");
-                const outputDiv = document.getElementById("output");
-                tableBody.innerHTML = '';
-                let totalItems = 0;
-                let totalMinItems = 0;
+            generateTable(filteredTypes);
+          } catch (error) {
+            console.error('Error fetching XML:', error);
+            alert('Error loading XML data.');
+          }
+        }
 
-                filteredTypes.forEach((type) => {
-                    const row = document.createElement("tr");
+        function generateTable(filteredTypes) {
+          const tableBody = document.getElementById('tableBody');
+          const totals = document.getElementById('totals');
+          const outputDiv = document.getElementById('output');
+          tableBody.innerHTML = '';
+          let totalItems = 0;
+          let totalMinItems = 0;
 
-                    const columns = [
-                        type.getAttribute("name"),
-                        type.getElementsByTagName("nominal")[0]?.textContent,
-                        type.getElementsByTagName("lifetime")[0]?.textContent,
-                        type.getElementsByTagName("restock")[0]?.textContent,
-                        type.getElementsByTagName("min")[0]?.textContent,
-                        type.getElementsByTagName("quantmin")[0]?.textContent,
-                        type.getElementsByTagName("quantmax")[0]?.textContent,
-                        Array.from(type.getElementsByTagName("tag"))
-                            .map(tag => tag.getAttribute("name"))
-                            .join(", "),
-                        Array.from(type.getElementsByTagName("usage"))
-                            .map(usage => usage.getAttribute("name"))
-                            .join(", "),
-                        Array.from(type.getElementsByTagName("value"))
-                            .map(value => value.getAttribute("name"))
-                            .join(", ")
-                    ];
+          filteredTypes.forEach((type) => {
+            const row = document.createElement('tr');
 
-                    columns.forEach((columnText) => {
-                        const td = document.createElement("td");
-                        td.classList.add("px-4", "py-2", "text-sm", "border", "border-gray-200");
-                        td.textContent = columnText;
-                        row.appendChild(td);
-                    });
+            const columns = [
+              type.getAttribute('name'),
+              type.getElementsByTagName('nominal')[0]?.textContent,
+              type.getElementsByTagName('lifetime')[0]?.textContent,
+              type.getElementsByTagName('restock')[0]?.textContent,
+              type.getElementsByTagName('min')[0]?.textContent,
+              type.getElementsByTagName('quantmin')[0]?.textContent,
+              type.getElementsByTagName('quantmax')[0]?.textContent,
+              Array.from(type.getElementsByTagName('tag'))
+                .map((tag) => tag.getAttribute('name'))
+                .join(', '),
+              Array.from(type.getElementsByTagName('usage'))
+                .map((usage) => usage.getAttribute('name'))
+                .join(', '),
+              Array.from(type.getElementsByTagName('value'))
+                .map((value) => value.getAttribute('name'))
+                .join(', '),
+            ];
 
-                    tableBody.appendChild(row);
+            columns.forEach((columnText) => {
+              const td = document.createElement('td');
+              td.classList.add(
+                'px-4',
+                'py-2',
+                'text-sm',
+                'border',
+                'border-gray-200'
+              );
+              td.textContent = columnText;
+              row.appendChild(td);
+            });
 
-                    // Update totals
-                    totalItems += parseInt(type.getElementsByTagName("nominal")[0]?.textContent || 0, 10);
-                    totalMinItems += parseInt(type.getElementsByTagName("min")[0]?.textContent || 0, 10);
-                });
+            tableBody.appendChild(row);
 
-                totals.textContent = `Total Items: ${totalItems} | Total Minimum Items: ${totalMinItems}`;
-                totals.classList.remove("hidden");  // Show the totals
-                outputDiv.classList.remove("hidden");  // Show the output div containing the table
-            }
+            // Update totals
+            totalItems += parseInt(
+              type.getElementsByTagName('nominal')[0]?.textContent || 0,
+              10
+            );
+            totalMinItems += parseInt(
+              type.getElementsByTagName('min')[0]?.textContent || 0,
+              10
+            );
+          });
 
-            document.querySelector('button').addEventListener('click', filterXML);
-        });
+          totals.textContent = `Total Items: ${totalItems} | Total Minimum Items: ${totalMinItems}`;
+          totals.classList.remove('hidden'); // Show the totals
+          outputDiv.classList.remove('hidden'); // Show the output div containing the table
+        }
+
+        document.querySelector('button').addEventListener('click', filterXML);
+      });
     </script>
-</body>
-
+  </body>
 </html>

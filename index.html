@@ -1,28 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage - Berkshire Blackout Chamber</title>
+    <meta
+      name="description"
+      content="A DayZ Community Server Hosted in London, United Kingdom"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homepage - Berkshire Blackout Chamber</title>
-  <meta name="description" content="A DayZ Community Server Hosted in London, United Kingdom" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="styles.css" rel="stylesheet" />
-</head>
-
-<body class="bg-gray-100 min-h-screen flex flex-col">
-  <div class="bg-white flex-grow">
-    <div class="container py-12">
-      <h1 class="text-center">Welcome to the Berkshire Blackout Chamber!</h1>
-      <div class="max-w-prose mx-auto text-center [&_p:last-of-type]:mb-0">
-        <p>A DayZ server located in Europe offering a unique and dynamic experience for both new and seasoned survivors. Explore the harsh world of Chernarus shaped by custom loot tables, spawns and gameplay designed to strike the perfect balance between survival and PvP. Join a new and exciting community where your actions help shape the map and create unforgettable stories. Your journey begins here, whether you're scavenging for gear, building alliances or engaging in tense firefights. Dive in, introduce yourself and start making your mark &mdash; survival is just the beginning.</p>
-        <p><span class="block font-bold">Join the Discord</span> <a href="https://discord.gg/k9fRuhe5kw"
-          target="_blank">https://discord.gg/k9fRuhe5kw</a></p>
-        <p><span class="block font-bold">View the Loot Table</span> <a href="./loot.html"
-          target="_blank">Click Here</a></p>
+  <body class="flex min-h-screen flex-col bg-gray-100">
+    <div class="flex-grow bg-white">
+      <div class="container py-12">
+        <h1 class="text-center">Welcome to the Berkshire Blackout Chamber!</h1>
+        <div class="mx-auto max-w-prose text-center [&_p:last-of-type]:mb-0">
+          <p>
+            A DayZ server located in Europe offering a unique and dynamic
+            experience for both new and seasoned survivors. Explore the harsh
+            world of Chernarus shaped by custom loot tables, spawns and gameplay
+            designed to strike the perfect balance between survival and PvP.
+            Join a new and exciting community where your actions help shape the
+            map and create unforgettable stories. Your journey begins here,
+            whether you're scavenging for gear, building alliances or engaging
+            in tense firefights. Dive in, introduce yourself and start making
+            your mark &mdash; survival is just the beginning.
+          </p>
+          <p>
+            <span class="block font-bold">Join the Discord</span>
+            <a href="https://discord.gg/k9fRuhe5kw" target="_blank"
+              >https://discord.gg/k9fRuhe5kw</a
+            >
+          </p>
+          <p>
+            <span class="block font-bold">View the Loot Table</span>
+            <a href="./loot.html" target="_blank">Click Here</a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+    <div class="border-y border-black bg-gray-900 text-white" role="alert">
+      <div class="container py-2 [&_p:last-of-type]:mb-0">
+        <p class="text-center text-sm uppercase">
+          Copyright <span id="copyright"></span> &copy; Berkshire Blackout
+          Chamber
+        </p>
+      </div>
+    </div>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const currentYear = new Date().getFullYear();
+        const copyrightWrapper = document.getElementById('copyright');
+        copyrightWrapper.textContent = currentYear;
+      });
+    </script>
+  </body>
 </html>
