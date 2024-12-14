@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML to CSV Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      input[type='file'] {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>XML to CSV Converter</h1>
+      <input type="file" id="xmlFile" accept=".xml" />
+      <br />
+      <button onclick="convertToCSV()">Convert and Download CSV</button>
+      <p id="status"></p>
+    </div>
+
+    <script>
+      function convertToCSV() {
+        const fileInput = document.getElementById('xmlFile');
+        const status = document.getElementById('status');
+
+        if (!fileInput.files.length) {
+          status.textContent = 'Please select an XML file to upload.';
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(
+            event.target.result,
+            'application/xml'
+          );
+
+          if (xml.getElementsByTagName('parsererror').length) {
+            status.textContent = 'Invalid XML file.';
+            return;
+          }
+
+          const rows = [];
+          const root = xml.documentElement;
+          const items = root.getElementsByTagName('type');
+
+          if (items.length === 0) {
+            status.textContent = 'No data found in the XML file.';
+            return;
+          }
+
+          // Define headers
+          const headers = [
+            'name',
+            'nominal',
+            'lifetime',
+            'restock',
+            'min',
+            'quantmin',
+            'quantmax',
+            'cost',
+            'tags',
+            'usages',
+            'values',
+          ];
+          rows.push(headers.join(','));
+
+          // Process each <type>
+          for (const item of items) {
+            const name = item.getAttribute('name') || '';
+            const nominal =
+              item.getElementsByTagName('nominal')[0]?.textContent || '';
+            const lifetime =
+              item.getElementsByTagName('lifetime')[0]?.textContent || '';
+            const restock =
+              item.getElementsByTagName('restock')[0]?.textContent || '';
+            const min = item.getElementsByTagName('min')[0]?.textContent || '';
+            const quantmin =
+              item.getElementsByTagName('quantmin')[0]?.textContent || '';
+            const quantmax =
+              item.getElementsByTagName('quantmax')[0]?.textContent || '';
+            const cost =
+              item.getElementsByTagName('cost')[0]?.textContent || '';
+
+            // Collect multiple <tag>, <usage>, <value> into single columns
+            const tags = Array.from(item.getElementsByTagName('tag'))
+              .map((tag) => tag.getAttribute('name'))
+              .join(';');
+
+            const usages = Array.from(item.getElementsByTagName('usage'))
+              .map((usage) => usage.getAttribute('name'))
+              .join(';');
+
+            const values = Array.from(item.getElementsByTagName('value'))
+              .map((value) => value.getAttribute('name'))
+              .join(';');
+
+            // Create a row
+            const row = [
+              name,
+              nominal,
+              lifetime,
+              restock,
+              min,
+              quantmin,
+              quantmax,
+              cost,
+              tags,
+              usages,
+              values,
+            ];
+            rows.push(
+              row
+                .map((value) => '"' + value.replace(/"/g, '""') + '"')
+                .join(',')
+            );
+          }
+
+          // Create CSV file
+          const csvContent = rows.join('\n');
+          const blob = new Blob([csvContent], {
+            type: 'text/csv;charset=utf-8;',
+          });
+          const url = URL.createObjectURL(blob);
+
+          // Trigger download
+          const link = document.createElement('a');
+          link.setAttribute('href', url);
+          link.setAttribute('download', 'converted.csv');
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          status.textContent = 'CSV file created successfully!';
+        };
+
+        reader.onerror = function () {
+          status.textContent = 'Error reading the file.';
+        };
+
+        reader.readAsText(file);
+      }
+    </script>
+  </body>
+</html>
