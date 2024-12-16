@@ -15,9 +15,7 @@
   <body class="flex min-h-screen flex-col bg-gray-100">
     <div class="border-y border-red-400 bg-red-100 text-red-700" role="alert">
       <div class="container py-2 [&_p:last-of-type]:mb-0">
-        <p class="text-center text-sm uppercase">
-          Still Under Development - Next wipe date: 16/12/2024
-        </p>
+        <p class="text-center text-sm uppercase">Still Under Development</p>
       </div>
     </div>
     <div class="flex-grow bg-white">
@@ -28,13 +26,22 @@
             <p class="mb-12">
               Search the loot table to find information on specific items.
             </p>
-            <div>
-              <label for="typeName" class="sr-only">Enter Item Type Name</label>
+            <div class="flex gap-2">
+              <!-- Dropdown Menu -->
+              <select
+                id="searchType"
+                class="block w-1/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              >
+                <option value="name">Name</option>
+                <option value="category">Category</option>
+              </select>
+              <!-- Search Bar -->
+              <label for="searchInput" class="sr-only">Search Input</label>
               <input
                 type="text"
-                id="typeName"
-                placeholder="e.g. GreenBellPepper"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                id="searchInput"
+                placeholder="e.g. GreenBellPepper or weapons"
+                class="block w-3/4 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
               <button
                 class="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
@@ -44,9 +51,18 @@
             </div>
           </div>
         </div>
-        <p id="totals" class="mb-2 hidden text-sm font-bold uppercase">
-          Total Items: 0 | Total Minimum Items: 0
-        </p>
+        <div
+          class="mb-4 grid grid-cols-2 gap-4 rounded-md border border-purple-900 bg-purple-900 p-4 text-white"
+        >
+          <div class="text-left">
+            <p id="totals" class="mb-0 hidden text-sm font-bold uppercase">
+              Total Items: 0 | Total Minimum Items: 0
+            </p>
+          </div>
+          <div class="text-right">
+            <p class="mb-0 text-sm font-bold uppercase">Loot Version 0.1.0</p>
+          </div>
+        </div>
         <div id="output" class="hidden overflow-x-auto bg-white">
           <table class="w-full min-w-max table-auto border-collapse">
             <thead>
@@ -112,7 +128,7 @@
       </div>
     </div>
     <div class="border-y border-black bg-gray-900 text-white" role="alert">
-      <div class="container py-2 [&_p:last-of-type]:mb-0">
+      <div class="container py-4 [&_p:last-of-type]:mb-0">
         <p class="text-center text-sm uppercase">
           Copyright <span id="copyright"></span> &copy; Berkshire Blackout
           Chamber
@@ -127,9 +143,11 @@
         copyrightWrapper.textContent = currentYear;
 
         async function filterXML() {
-          const typeName = document
-            .getElementById('typeName')
+          const searchType = document.getElementById('searchType').value; // "name" or "category"
+          const searchInput = document
+            .getElementById('searchInput')
             .value.toLowerCase();
+
           try {
             const response = await fetch('types.xml');
             if (!response.ok) throw new Error('Failed to load XML file');
@@ -138,9 +156,26 @@
             const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
             const types = xmlDoc.getElementsByTagName('type');
 
+            // Filter based on selected search type
             const filteredTypes = Array.from(types).filter((type) => {
-              const name = type.getAttribute('name').toLowerCase();
-              return name.includes(typeName);
+              if (searchType === 'name') {
+                const name = type.getAttribute('name').toLowerCase();
+                return name.includes(searchInput);
+              } else if (searchType === 'category') {
+                const category = type
+                  .getElementsByTagName('category')[0]
+                  ?.getAttribute('name')
+                  ?.toLowerCase();
+                return category?.includes(searchInput);
+              }
+              return false;
+            });
+
+            // Sort and display the results
+            filteredTypes.sort((a, b) => {
+              const keyA = a.getAttribute('name').toLowerCase();
+              const keyB = b.getAttribute('name').toLowerCase();
+              return keyA.localeCompare(keyB);
             });
 
             generateTable(filteredTypes);
@@ -195,7 +230,6 @@
 
             tableBody.appendChild(row);
 
-            // Update totals
             totalItems += parseInt(
               type.getElementsByTagName('nominal')[0]?.textContent || 0,
               10
@@ -207,8 +241,8 @@
           });
 
           totals.textContent = `Total Items: ${totalItems} | Total Minimum Items: ${totalMinItems}`;
-          totals.classList.remove('hidden'); // Show the totals
-          outputDiv.classList.remove('hidden'); // Show the output div containing the table
+          totals.classList.remove('hidden');
+          outputDiv.classList.remove('hidden');
         }
 
         document.querySelector('button').addEventListener('click', filterXML);

@@ -23,7 +23,8 @@
   }
 
   a {
-    @apply text-blue-600 underline;
+    @apply text-purple-800 no-underline;
+    @apply hover:text-purple-950 hover:underline;
   }
 }
 
