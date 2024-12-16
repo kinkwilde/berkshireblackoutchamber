@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <types>
   <type name="AmmoBox_00buck_10rnd">
     <nominal>20</nominal>
@@ -11689,10 +11690,10 @@
     <category name="clothes" />
   </type>
   <type name="BaseballCap_Beige">
-    <nominal>30</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>20</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11704,10 +11705,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_Black">
-    <nominal>30</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>20</min>
+    <min>6</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11719,10 +11720,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_Blue">
-    <nominal>30</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>20</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11734,10 +11735,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_CMMG_Black">
-    <nominal>30</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>20</min>
+    <min>6</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11749,10 +11750,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_CMMG_Pink">
-    <nominal>30</nominal>
+    <nominal>6</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>15</min>
+    <min>4</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11764,10 +11765,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_Camo">
-    <nominal>25</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>15</min>
+    <min>6</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11778,10 +11779,10 @@
     <usage name="Hunting" />
   </type>
   <type name="BaseballCap_Olive">
-    <nominal>30</nominal>
+    <nominal>6</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>15</min>
+    <min>4</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11793,10 +11794,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_Pink">
-    <nominal>30</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>15</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11808,10 +11809,10 @@
     <usage name="Village" />
   </type>
   <type name="BaseballCap_Red">
-    <nominal>30</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>15</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11823,7 +11824,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Beige">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -11837,7 +11838,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Black">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -11851,7 +11852,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Blue">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -11865,7 +11866,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Brown">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -11879,7 +11880,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Green">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -11893,7 +11894,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Grey">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -11907,10 +11908,10 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Pink">
-    <nominal>15</nominal>
+    <nominal>6</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>5</min>
+    <min>4</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -11921,7 +11922,7 @@
     <usage name="Village" />
   </type>
   <type name="BeanieHat_Red">
-    <nominal>15</nominal>
+    <nominal>10</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
     <min>5</min>
@@ -12369,10 +12370,10 @@
     <usage name="Medic" />
   </type>
   <type name="MilitaryBeret_CDF">
-    <nominal>5</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>2</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -12385,10 +12386,10 @@
     <value name="Tier4" />
   </type>
   <type name="MilitaryBeret_ChDKZ">
-    <nominal>5</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>2</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -12401,10 +12402,10 @@
     <value name="Tier4" />
   </type>
   <type name="MilitaryBeret_NZ">
-    <nominal>4</nominal>
-    <lifetime>28800</lifetime>
+    <nominal>0</nominal>
+    <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>2</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -12414,10 +12415,10 @@
     <usage name="Military" />
   </type>
   <type name="MilitaryBeret_Red">
-    <nominal>5</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>2</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -12430,10 +12431,10 @@
     <value name="Tier4" />
   </type>
   <type name="MilitaryBeret_UN">
-    <nominal>4</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>2</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>
@@ -15566,10 +15567,10 @@
     <usage name="Village" />
   </type>
   <type name="Bandana_Redpattern">
-    <nominal>5</nominal>
+    <nominal>0</nominal>
     <lifetime>14400</lifetime>
     <restock>0</restock>
-    <min>2</min>
+    <min>0</min>
     <quantmin>-1</quantmin>
     <quantmax>-1</quantmax>
     <cost>100</cost>

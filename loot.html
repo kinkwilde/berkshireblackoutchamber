@@ -160,6 +160,8 @@
             const totalNominal = categorySums[categoryName];
             const totalMin = categoryMinSums[categoryName];
 
+            const percentage = ((totalNominal / grandTotal) * 100).toFixed(1);
+
             const filteredItems = categoryItems.filter((item) => {
               const nominal = parseInt(
                 item.getElementsByTagName('nominal')[0]?.textContent || '0',
@@ -187,7 +189,7 @@
               'focus:outline-none',
               'mb-4'
             );
-            accordionButton.textContent = `${categoryName} (${itemCount} Items)`;
+            accordionButton.textContent = `${categoryName} (${itemCount} Items) ${percentage}%`;
 
             const panel = document.createElement('div');
             panel.classList.add('panel', 'hidden', 'bg-white', 'mb-4');
