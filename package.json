@@ -25,6 +25,7 @@
   "homepage": "https://kinkwilde.github.io/berkshireblackoutchamber/",
   "devDependencies": {
     "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9"
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "^3.4.17"
   }
 }
