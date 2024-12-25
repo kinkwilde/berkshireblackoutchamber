@@ -13,7 +13,7 @@ const config = {
 		}),
 		paths: {
 			// Use the repository name as the base path
-			base: process.env.BASE_PATH || '/berkshireblackoutchamber'
+			base: '/berkshireblackoutchamber'
 		}
 	}
 };
