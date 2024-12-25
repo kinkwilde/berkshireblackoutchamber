@@ -8,8 +8,13 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter({
 			pages: 'docs',
-			assets: 'docs'
-		})
+			assets: 'docs',
+			fallback: null
+		}),
+		paths: {
+			// Use the repository name as the base path
+			base: process.env.BASE_PATH || '/berkshireblackoutchamber'
+		}
 	}
 };
 
