@@ -1,0 +1,32 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+	h1,
+	h2,
+	h3 {
+		@apply mb-4 font-bold;
+	}
+
+	h1 {
+		@apply text-2xl;
+	}
+
+	h2 {
+		@apply text-xl;
+	}
+
+	h3 {
+		@apply text-lg;
+	}
+
+	p {
+		@apply mb-4 text-base;
+	}
+
+	a {
+		@apply text-purple-800 no-underline;
+		@apply hover:text-purple-950 hover:underline;
+	}
+}

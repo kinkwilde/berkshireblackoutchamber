@@ -1,7 +1,4 @@
-.DS_Store
-
-/node_modules/
-
+# Package Managers
 package-lock.json
-
-styles.css
+pnpm-lock.yaml
+yarn.lock
