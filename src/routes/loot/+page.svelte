@@ -46,12 +46,18 @@
 			totalItems += nominalValue;
 		});
 
-		const categoryData = Object.entries(parsedCategories).map(([name, data]) => ({
-			name,
-			items: data.items,
-			totalNominal: data.totalNominal,
-			percentage: ((data.totalNominal / totalItems) * 100).toFixed(1)
-		}));
+		const categoryData = Object.entries(parsedCategories)
+			.map(([name, data]) => ({
+				name,
+				items: data.items,
+				totalNominal: data.totalNominal,
+				percentage: ((data.totalNominal / totalItems) * 100).toFixed(1)
+			}))
+			.sort((a, b) => {
+				if (a.name === 'Uncategorized') return 1;
+				if (b.name === 'Uncategorized') return -1;
+				return a.name.localeCompare(b.name);
+			});
 
 		grandTotal.set(totalItems);
 		accordionData.set(categoryData);
@@ -60,7 +66,7 @@
 	const toggleAccordion = (event) => {
 		const panel = event.target.closest('button').nextElementSibling;
 		if (panel) {
-			panel.classList.toggle('hidden'); // Toggles visibility
+			panel.classList.toggle('hidden');
 		}
 	};
 
