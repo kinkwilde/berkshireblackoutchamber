@@ -2,6 +2,8 @@
 	import Construction from '$lib/components/Construction.svelte';
 	import Version from '$lib/components/Version.svelte';
 
+	import { dayzVersion } from '$lib/stores/global';
+
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -113,7 +115,7 @@
 			<p class="mb-0 text-sm font-bold uppercase">Total Items: {$grandTotal}</p>
 		</div>
 		<div class="text-right">
-			<p class="mb-0 text-sm font-bold uppercase">1.26</p>
+			<p class="mb-0 text-sm font-bold uppercase">{$dayzVersion}</p>
 		</div>
 	</div>
 	<div>
