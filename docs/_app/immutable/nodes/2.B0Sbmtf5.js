@@ -1,4 +1,4 @@
-import{a as t,t as r}from"../chunks/disclose-version.Cl8X-Yd3.js";import"../chunks/legacy.sbs6dxha.js";var i=r(`<div class="container py-12"><div class="mx-auto mb-12 max-w-prose text-center [&amp;_p:last-of-type]:mb-0"><h1>Welcome to the Berkshire Blackout Chamber!</h1> <p>A DayZ server located in Europe with the unique challenge of a winter survival experience.
+import{a as t,t as r}from"../chunks/disclose-version.a6Ia8LJw.js";import"../chunks/legacy.HomNGct0.js";var i=r(`<div class="container py-12"><div class="mx-auto mb-12 max-w-prose text-center [&amp;_p:last-of-type]:mb-0"><h1>Welcome to the Berkshire Blackout Chamber!</h1> <p>A DayZ server located in Europe with the unique challenge of a winter survival experience.
 			Immerse yourself in a snow-covered version of Chernarus, where the environment blends the
 			frigid temperatures of Sakhal with the classic feel of the original map. With default vanilla
 			loot tables and gameplay, the focus is on authentic survival and organic player interactions.
