@@ -2,7 +2,7 @@
 	import Construction from '$lib/components/Construction.svelte';
 	import Version from '$lib/components/Version.svelte';
 
-	import { dayzVersion } from '$lib/stores/global';
+	import { dayzVersion, wipeDate } from '$lib/stores/global';
 
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -72,7 +72,7 @@
 		}
 	};
 
-	const lastWipeDate = new Date('2024-12-23T00:00:00Z');
+	const lastWipeDate = new Date($wipeDate);
 
 	let lastWipeElapsed = '';
 
