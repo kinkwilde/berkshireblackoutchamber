@@ -3,6 +3,10 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+	body {
+		@apply bg-smoke;
+	}
+
 	h1,
 	h2,
 	h3 {
@@ -26,7 +30,11 @@
 	}
 
 	a {
-		@apply text-purple-800 no-underline;
-		@apply hover:text-purple-950 hover:underline;
+		@apply text-red no-underline;
+		@apply hover:underline;
+	}
+
+	svg {
+		@apply h-[1em] w-[1em];
 	}
 }

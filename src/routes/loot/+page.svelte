@@ -96,7 +96,7 @@
 </script>
 
 <Construction />
-<div class="container py-12">
+<div class="text-khaki container py-12">
 	<div class="mb-12">
 		<h1 class="text-center">Loot Table Overview</h1>
 		<div class="mb-4 text-center">Last Wipe: {lastWipeElapsed}</div>
@@ -127,11 +127,11 @@
 				>
 					{name} ({items.length} Items) {percentage}%
 				</button>
-				<div class="hidden bg-white p-4">
+				<div class="bg-smoke hidden p-4">
 					<p class="mb-4 text-sm font-bold uppercase">
 						Total Items: {totalNominal}
 					</p>
-					<div class="overflow-x-auto bg-white">
+					<div class="bg-smoke overflow-x-auto">
 						<table class="w-full min-w-max table-auto border-collapse">
 							<thead>
 								<tr>

@@ -1,11 +1,17 @@
 <script>
+	import { base } from '$app/paths';
+
 	const currentYear = new Date().getFullYear();
 </script>
 
-<div class="border-y border-black bg-gray-900 text-white">
-	<div class="container py-2 [&_p:last-of-type]:mb-0">
-		<p class="text-center text-sm uppercase">
-			Copyright {currentYear} &copy; Berkshire Blackout Chamber
+<footer class="py-8">
+	<div class="container grid grid-cols-3 items-center gap-4">
+		<p class="text-night mb-0 text-left text-sm uppercase">All rights reserved.</p>
+		<a href="{base}/" class="mx-auto hover:no-underline"
+			><img src="./logo.png" alt="logo" class="max-w-32" /></a
+		>
+		<p class="text-night mb-0 text-right text-sm uppercase">
+			Copyright {currentYear} &copy; Blackout Chamber
 		</p>
 	</div>
-</div>
+</footer>
